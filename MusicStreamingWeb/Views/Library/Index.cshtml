@@ -1,0 +1,16 @@
+﻿@model List<MusicStreamingWeb.Models.SongOnDisk>
+@{
+    ViewBag.Title = "List of songs";
+}
+@foreach (var i in Model)
+{
+    <div id="container">
+        <audio controls>
+            <p>Artist: @i.Artist</p>
+            <p>Name : @i.Name</p>
+            <source src="@i.Path" type="audio/@i.Format">
+            Тег audio не поддерживается вашим браузером.
+            <a href="audio/music.mp3">Скачайте музыку</a>.
+        </audio>
+    </div>
+} 

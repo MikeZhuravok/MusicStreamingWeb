@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+    <img src="~/Content/images/Music-Playlist.png" class="img-responsive center-block" alt="Logo" />
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>Here is the app where you can stream and listen music streams on every device.</p>
+        @Html.ActionLink("Learn more", "About", new { },  new { @class = "btn btn-default"})
+    </div>
+    
+    <div class="col-md-4">
+        <h2>Contacts</h2>
+        <p>Clicked the button down, you can find all contacts of person created MusicStreaming App</p>
+        @Html.ActionLink("Learn more", "Contact", new { }, new { @class = "btn btn-default" })
+    </div>
+    <div class="col-md-4">
+        <h2>Used Sources</h2>
+        <p>Here is the list of used articles, libraries, resources</p>
+        @Html.ActionLink("Learn more", "UsedSources", new { }, new { @class = "btn btn-default" })
+    </div>
+</div>
