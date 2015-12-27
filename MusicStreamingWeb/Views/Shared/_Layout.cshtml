@@ -30,14 +30,15 @@
             </div>
             <li class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Homepage", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("Homepage", "Index", "Home")</li>*@
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
+                    @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     <li>@Html.ActionLink("Sound Library", "Index", "Library")</li>
                     <li>@Html.ActionLink("Listen Broadcast", "Index", "Broadcast")</li>
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Song List", "Index", "Songs")</li>
+                        <li>@Html.ActionLink("Your Broadcast", "YourBroadcast", "Broadcast")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

@@ -1,0 +1,12 @@
+﻿@model List<MusicStreaming.Data.Models.Song>
+@{
+    ViewBag.Title = "AddSongToPlaylist";
+}
+
+<h2>AddSongToPlaylist</h2>
+<select>
+    @foreach (var i in Model)
+    {
+        <option>@i.Artist - @i.Title</option>
+    }
+</select>

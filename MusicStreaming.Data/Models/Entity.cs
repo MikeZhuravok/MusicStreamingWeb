@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace MusicStreamingWeb.Models
+namespace MusicStreaming.Data.Models
 {
     public class Entity
     {

@@ -7,7 +7,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace MusicStreamingWeb.Models
+namespace MusicStreaming.Data.Models
 {
     public class ApplicationUser : IdentityUser
     {

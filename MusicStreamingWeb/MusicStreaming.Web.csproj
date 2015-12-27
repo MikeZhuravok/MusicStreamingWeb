@@ -184,15 +184,11 @@
     <Compile Include="Migrations\201512252324174_SomeChangesInSongEntity.Designer.cs">
       <DependentUpon>201512252324174_SomeChangesInSongEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512272100023_AddedPlaylist.cs" />
+    <Compile Include="Migrations\201512272100023_AddedPlaylist.Designer.cs">
+      <DependentUpon>201512272100023_AddedPlaylist.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\Entity.cs" />
-    <Compile Include="Models\LoginViewModel.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\RegisterViewModel.cs" />
-    <Compile Include="Models\Song.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -203,8 +199,9 @@
     <Content Include="Content\image\jplayer.blue.monday.seeking.gif" />
     <Content Include="Content\image\jplayer.blue.monday.video.play.png" />
     <Content Include="Content\image\Music-Playlist.png" />
-    <Content Include="Content\js\Jplayer.swf" />
+    <Content Include="Content\js\jquery.jplayer.js" />
     <Content Include="Content\js\jquery.jplayer.min.js" />
+    <Content Include="Content\js\Jplayer.swf" />
     <Content Include="Content\skin\jplayer.blue.monday.css" />
     <Content Include="Content\skin\jplayer.blue.monday.jpg" />
     <Content Include="Content\skin\jplayer.blue.monday.video.play.hover.png" />
@@ -270,6 +267,8 @@
     <Content Include="Views\Songs\Edit.cshtml" />
     <Content Include="Views\Songs\Delete.cshtml" />
     <Content Include="Views\Broadcast\Index.cshtml" />
+    <Content Include="Views\Broadcast\YourBrodcast.cshtml" />
+    <Content Include="Views\Broadcast\AddSongToPlaylist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -289,6 +288,15 @@
     <EmbeddedResource Include="Migrations\201512252324174_SomeChangesInSongEntity.resx">
       <DependentUpon>201512252324174_SomeChangesInSongEntity.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512272100023_AddedPlaylist.resx">
+      <DependentUpon>201512272100023_AddedPlaylist.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MusicStreaming.Data\MusicStreaming.Data.csproj">
+      <Project>{00118446-06c9-42a3-aafa-e437ef1de444}</Project>
+      <Name>MusicStreaming.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
