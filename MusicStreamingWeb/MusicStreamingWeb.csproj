@@ -168,12 +168,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BroadcastController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LibraryController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SongsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512252310263_InitialCreate.cs" />
+    <Compile Include="Migrations\201512252310263_InitialCreate.Designer.cs">
+      <DependentUpon>201512252310263_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512252324174_SomeChangesInSongEntity.cs" />
+    <Compile Include="Migrations\201512252324174_SomeChangesInSongEntity.Designer.cs">
+      <DependentUpon>201512252324174_SomeChangesInSongEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -182,125 +193,29 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\Song.cs" />
-    <Compile Include="Models\SongOnDisk.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\Music-Playlist.png" />
-    <Content Include="Content\ion.sound.js" />
-    <Content Include="Content\ion.sound.min.js" />
-    <Content Include="Content\jPlayer-2.9.2\.gitignore" />
-    <Content Include="Content\jPlayer-2.9.2\Gruntfile.js" />
-    <Content Include="Content\jPlayer-2.9.2\image\jplayer.blue.monday.jpg" />
-    <Content Include="Content\jPlayer-2.9.2\image\jplayer.blue.monday.seeking.gif" />
-    <Content Include="Content\jPlayer-2.9.2\image\jplayer.blue.monday.video.play.png" />
-    <Content Include="Content\jPlayer-2.9.2\jquery.jplayer.js" />
-    <Content Include="Content\jPlayer-2.9.2\jquery.jplayer.min.js" />
-    <Content Include="Content\jPlayer-2.9.2\jquery.jplayer.swf" />
-    <Content Include="Content\jPlayer-2.9.2\MIT-LICENSE.txt" />
-    <Content Include="Content\jPlayer-2.9.2\mustache\jplayer.blue.monday.audio.playlist.html" />
-    <Content Include="Content\jPlayer-2.9.2\mustache\jplayer.blue.monday.audio.single.html" />
-    <Content Include="Content\jPlayer-2.9.2\mustache\jplayer.blue.monday.audio.stream.html" />
-    <Content Include="Content\jPlayer-2.9.2\mustache\jplayer.blue.monday.video.playlist.html" />
-    <Content Include="Content\jPlayer-2.9.2\mustache\jplayer.blue.monday.video.single.html" />
-    <Content Include="Content\SoundLibrary\oxxxy.mp3" />
-    <Content Include="Content\sounds\beer_can_opening.aac" />
-    <Content Include="Content\sounds\beer_can_opening.mp3" />
-    <Content Include="Content\sounds\bell_ring.aac" />
-    <Content Include="Content\sounds\bell_ring.mp3" />
-    <Content Include="Content\sounds\branch_break.aac" />
-    <Content Include="Content\sounds\branch_break.mp3" />
-    <Content Include="Content\sounds\button_click.aac" />
-    <Content Include="Content\sounds\button_click.mp3" />
-    <Content Include="Content\sounds\button_click_on.aac" />
-    <Content Include="Content\sounds\button_click_on.mp3" />
-    <Content Include="Content\sounds\button_push.aac" />
-    <Content Include="Content\sounds\button_push.mp3" />
-    <Content Include="Content\sounds\button_tiny.aac" />
-    <Content Include="Content\sounds\button_tiny.mp3" />
-    <Content Include="Content\sounds\camera_flashing.aac" />
-    <Content Include="Content\sounds\camera_flashing.mp3" />
-    <Content Include="Content\sounds\camera_flashing_2.aac" />
-    <Content Include="Content\sounds\camera_flashing_2.mp3" />
-    <Content Include="Content\sounds\cd_tray.aac" />
-    <Content Include="Content\sounds\cd_tray.mp3" />
-    <Content Include="Content\sounds\computer_error.aac" />
-    <Content Include="Content\sounds\computer_error.mp3" />
-    <Content Include="Content\sounds\door_bell.aac" />
-    <Content Include="Content\sounds\door_bell.mp3" />
-    <Content Include="Content\sounds\door_bump.aac" />
-    <Content Include="Content\sounds\door_bump.mp3" />
-    <Content Include="Content\sounds\glass.aac" />
-    <Content Include="Content\sounds\glass.mp3" />
-    <Content Include="Content\sounds\keyboard_desk.aac" />
-    <Content Include="Content\sounds\keyboard_desk.mp3" />
-    <Content Include="Content\sounds\light_bulb_breaking.aac" />
-    <Content Include="Content\sounds\light_bulb_breaking.mp3" />
-    <Content Include="Content\sounds\metal_plate.aac" />
-    <Content Include="Content\sounds\metal_plate.mp3" />
-    <Content Include="Content\sounds\metal_plate_2.aac" />
-    <Content Include="Content\sounds\metal_plate_2.mp3" />
-    <Content Include="Content\sounds\pop_cork.aac" />
-    <Content Include="Content\sounds\pop_cork.mp3" />
-    <Content Include="Content\sounds\snap.aac" />
-    <Content Include="Content\sounds\snap.mp3" />
-    <Content Include="Content\sounds\staple_gun.aac" />
-    <Content Include="Content\sounds\staple_gun.mp3" />
-    <Content Include="Content\sounds\tap.aac" />
-    <Content Include="Content\sounds\tap.mp3" />
-    <Content Include="Content\sounds\water_droplet.aac" />
-    <Content Include="Content\sounds\water_droplet.mp3" />
-    <Content Include="Content\sounds\water_droplet_2.aac" />
-    <Content Include="Content\sounds\water_droplet_2.mp3" />
-    <Content Include="Content\sounds\water_droplet_3.aac" />
-    <Content Include="Content\sounds\water_droplet_3.mp3" />
+    <Content Include="Content\image\jplayer.blue.monday.jpg" />
+    <Content Include="Content\image\jplayer.blue.monday.seeking.gif" />
+    <Content Include="Content\image\jplayer.blue.monday.video.play.png" />
+    <Content Include="Content\image\Music-Playlist.png" />
+    <Content Include="Content\js\Jplayer.swf" />
+    <Content Include="Content\js\jquery.jplayer.min.js" />
+    <Content Include="Content\skin\jplayer.blue.monday.css" />
+    <Content Include="Content\skin\jplayer.blue.monday.jpg" />
+    <Content Include="Content\skin\jplayer.blue.monday.video.play.hover.png" />
+    <Content Include="Content\skin\jplayer.blue.monday.video.play.png" />
+    <Content Include="Content\skin\pbar-ani.gif" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\.DS_Store" />
-    <Content Include="Content\sounds\beer_can_opening.ogg" />
-    <Content Include="Content\sounds\bell_ring.ogg" />
-    <Content Include="Content\sounds\branch_break.ogg" />
-    <Content Include="Content\sounds\button_click.ogg" />
-    <Content Include="Content\sounds\button_click_on.ogg" />
-    <Content Include="Content\sounds\button_push.ogg" />
-    <Content Include="Content\sounds\button_tiny.ogg" />
-    <Content Include="Content\sounds\camera_flashing.ogg" />
-    <Content Include="Content\sounds\camera_flashing_2.ogg" />
-    <Content Include="Content\sounds\cd_tray.ogg" />
-    <Content Include="Content\sounds\computer_error.ogg" />
-    <Content Include="Content\sounds\door_bell.ogg" />
-    <Content Include="Content\sounds\door_bump.ogg" />
-    <Content Include="Content\sounds\glass.ogg" />
-    <Content Include="Content\sounds\keyboard_desk.ogg" />
-    <Content Include="Content\sounds\light_bulb_breaking.ogg" />
-    <Content Include="Content\sounds\metal_plate.ogg" />
-    <Content Include="Content\sounds\metal_plate_2.ogg" />
-    <Content Include="Content\sounds\pop_cork.ogg" />
-    <Content Include="Content\sounds\snap.ogg" />
-    <Content Include="Content\sounds\staple_gun.ogg" />
-    <Content Include="Content\sounds\tap.ogg" />
-    <Content Include="Content\sounds\water_droplet.ogg" />
-    <Content Include="Content\sounds\water_droplet_2.ogg" />
-    <Content Include="Content\sounds\water_droplet_3.ogg" />
-    <Content Include="Content\jPlayer-2.9.2\.jamignore" />
-    <Content Include="Content\jPlayer-2.9.2\bower.json" />
-    <Content Include="Content\jPlayer-2.9.2\CHANGELOG.md" />
-    <Content Include="Content\jPlayer-2.9.2\CLA.md" />
-    <Content Include="Content\jPlayer-2.9.2\composer.json" />
-    <Content Include="Content\jPlayer-2.9.2\CONTRIBUTING.md" />
-    <Content Include="Content\jPlayer-2.9.2\MIGRATION.md" />
-    <Content Include="Content\jPlayer-2.9.2\package.json" />
-    <Content Include="Content\jPlayer-2.9.2\README.md" />
-    <Content Include="Content\jPlayer-2.9.2\scss\jplayer.blue.monday.scss" />
-    <Content Include="Scripts\ezSQL\ez_sql_mysql.php" />
-    <Content Include="Scripts\ezSQL\ez_sql_core.php" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -313,7 +228,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Content\SoundLibrary\01 Maps.m4a" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -350,6 +264,12 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\UsedSources.cshtml" />
     <Content Include="Views\Library\Index.cshtml" />
+    <Content Include="Views\Songs\Index.cshtml" />
+    <Content Include="Views\Songs\Details.cshtml" />
+    <Content Include="Views\Songs\Create.cshtml" />
+    <Content Include="Views\Songs\Edit.cshtml" />
+    <Content Include="Views\Songs\Delete.cshtml" />
+    <Content Include="Views\Broadcast\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -361,6 +281,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201512252310263_InitialCreate.resx">
+      <DependentUpon>201512252310263_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512252324174_SomeChangesInSongEntity.resx">
+      <DependentUpon>201512252324174_SomeChangesInSongEntity.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

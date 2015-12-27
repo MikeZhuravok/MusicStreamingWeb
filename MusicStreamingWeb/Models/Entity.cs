@@ -10,6 +10,6 @@ namespace MusicStreamingWeb.Models
     {
 
         [Required]
-        public int ID { set; get; }
+        public int Id { set; get; }
     }
 }

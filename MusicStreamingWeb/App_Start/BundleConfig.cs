@@ -27,9 +27,9 @@ namespace MusicStreamingWeb
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
-            bundles.Add(new ScriptBundle("~/bundles/jplayer").Include(
-                "~/Content/jPlayer-2.9.2/jquery.jplayer.min.js",
-                "~/Content/jPlayer-2.9.2/scss/jplayer.blue.monday.css/"));
+            //bundles.Add(new ScriptBundle("~/bundles/jplayerJs").Include(
+            //    "~/Content/js/jquery.jplayer.min.js"));
+            //bundles.Add(new StyleBundle("~/bundles/jplayerStyles").Include("~/Content/js/jplayer.blue.monday.css"));
         }
     }
 }

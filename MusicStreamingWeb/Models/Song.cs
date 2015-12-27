@@ -9,10 +9,12 @@ namespace MusicStreamingWeb.Models
     public class Song : Entity
     {
         [Required]
-        public string Artist { set; get; }
+        public string Title { set; get; }
+        //    public byte[] File { set; get; }
         [Required]
-        public string Name { set; get; }
-
-        public byte[] File { set; get; }
+        public string Url { set; get; }
+        [Required]
+        public string Artist { set; get; }
+        public string Format { set; get; }
     }
 }
