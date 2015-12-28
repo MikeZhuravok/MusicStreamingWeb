@@ -4,9 +4,16 @@
 }
 
 <h2>AddSongToPlaylist</h2>
-<select>
-    @foreach (var i in Model)
+
+    @using (Html.BeginForm("AddSongToPlaylist", "Broadcast", FormMethod.Post, new { @class = "form-horizontal" }))
     {
-        <option>@i.Artist - @i.Title</option>
+        <select name="id" class="form-control">
+        @foreach (var i in Model)
+        {
+            <option value="@i.Id">@i.Artist - @i.Title</option>
+        }
+    </select>
+    <br />
+    <input type="submit" value="Add Song" class="btn btn-primary" />
     }
-</select>
+    
