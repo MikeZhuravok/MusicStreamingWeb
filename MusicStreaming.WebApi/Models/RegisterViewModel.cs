@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace MusicStreaming.Data.Models
+namespace MusicStreaming.WebApi.Models
 {
     public class RegisterViewModel
     {

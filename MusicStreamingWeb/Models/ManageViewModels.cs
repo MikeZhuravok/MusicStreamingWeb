@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace MusicStreaming.Data.Models
+namespace MusicStreamingWeb.Models
 {
     public class IndexViewModel
     {

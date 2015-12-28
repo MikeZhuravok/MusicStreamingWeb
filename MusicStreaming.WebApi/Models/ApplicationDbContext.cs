@@ -5,7 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace MusicStreaming.Data.Models
+namespace MusicStreaming.WebApi.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -15,6 +15,7 @@ namespace MusicStreaming.Data.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new DbInitializer());
         }
 
         public static ApplicationDbContext Create()

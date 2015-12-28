@@ -12,46 +12,44 @@ using MusicStreaming.WebApi.Models;
 
 namespace MusicStreaming.WebApi.Controllers
 {
-    public class SongsController : ApiController
+    public class PlaylistsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        
-        //public IQueryable<Song> GetSongs()
-        //{
-        //    return db.Songs;
-        //}
 
-        public IEnumerable<Song> GetSongs()
+        // GET: api/Playlists
+        public IQueryable<Playlist> GetPlaylists()
         {
-            return db.Songs.AsEnumerable();
+            return db.Playlists;
         }
-        
-        [ResponseType(typeof(Song))]
-        public IHttpActionResult GetSong(int id)
+
+        // GET: api/Playlists/5
+        [ResponseType(typeof(Playlist))]
+        public IHttpActionResult GetPlaylist(int id)
         {
-            Song song = db.Songs.Find(id);
-            if (song == null)
+            Playlist playlist = db.Playlists.Find(id);
+            if (playlist == null)
             {
                 return NotFound();
             }
 
-            return Ok(song);
+            return Ok(playlist);
         }
 
+        // PUT: api/Playlists/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutSong(int id, Song song)
+        public IHttpActionResult PutPlaylist(int id, Playlist playlist)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != song.Id)
+            if (id != playlist.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(song).State = EntityState.Modified;
+            db.Entry(playlist).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +57,7 @@ namespace MusicStreaming.WebApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SongExists(id))
+                if (!PlaylistExists(id))
                 {
                     return NotFound();
                 }
@@ -72,35 +70,35 @@ namespace MusicStreaming.WebApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Songs
-        [ResponseType(typeof(Song))]
-        public IHttpActionResult PostSong(Song song)
+        // POST: api/Playlists
+        [ResponseType(typeof(Playlist))]
+        public IHttpActionResult PostPlaylist(Playlist playlist)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Songs.Add(song);
+            db.Playlists.Add(playlist);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = song.Id }, song);
+            return CreatedAtRoute("DefaultApi", new { id = playlist.Id }, playlist);
         }
 
-        // DELETE: api/Songs/5
-        [ResponseType(typeof(Song))]
-        public IHttpActionResult DeleteSong(int id)
+        // DELETE: api/Playlists/5
+        [ResponseType(typeof(Playlist))]
+        public IHttpActionResult DeletePlaylist(int id)
         {
-            Song song = db.Songs.Find(id);
-            if (song == null)
+            Playlist playlist = db.Playlists.Find(id);
+            if (playlist == null)
             {
                 return NotFound();
             }
 
-            db.Songs.Remove(song);
+            db.Playlists.Remove(playlist);
             db.SaveChanges();
 
-            return Ok(song);
+            return Ok(playlist);
         }
 
         protected override void Dispose(bool disposing)
@@ -112,9 +110,9 @@ namespace MusicStreaming.WebApi.Controllers
             base.Dispose(disposing);
         }
 
-        private bool SongExists(int id)
+        private bool PlaylistExists(int id)
         {
-            return db.Songs.Count(e => e.Id == id) > 0;
+            return db.Playlists.Count(e => e.Id == id) > 0;
         }
     }
 }
