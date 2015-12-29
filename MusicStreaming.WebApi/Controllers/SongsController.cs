@@ -72,8 +72,8 @@ namespace MusicStreaming.WebApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Songs
-        [ResponseType(typeof(Song))]
+       // POST: api/Songs
+       [ResponseType(typeof(Song))]
         public IHttpActionResult PostSong(Song song)
         {
             if (!ModelState.IsValid)
@@ -86,6 +86,7 @@ namespace MusicStreaming.WebApi.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = song.Id }, song);
         }
+
 
         // DELETE: api/Songs/5
         [ResponseType(typeof(Song))]

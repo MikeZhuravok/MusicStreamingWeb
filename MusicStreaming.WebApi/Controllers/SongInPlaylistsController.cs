@@ -34,10 +34,10 @@ namespace MusicStreaming.WebApi.Controllers
 
             return Ok(songInPlaylist);
         }
-
-        public IEnumerable<Song> SongInPlaylistsFromUser(int id)
+        [ResponseType(typeof(Song))]
+        public IEnumerable<Song> SongInPlaylistsFromUser(string id)
         {
-            var playlist = db.Playlists.FirstOrDefault(i => i.Id == id);
+            var playlist = db.Playlists.FirstOrDefault(i => i.UserId == id);
             if (playlist == null)
             {
                 return null;
