@@ -64,7 +64,7 @@ namespace MusicStreamingWeb.Controllers
                 streamWriter.Close();
             }
 
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse(); // error 400 not found
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
                 var result = streamReader.ReadToEnd();
