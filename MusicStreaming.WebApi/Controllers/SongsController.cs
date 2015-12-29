@@ -9,13 +9,14 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using MusicStreaming.WebApi.Models;
+using System.Web.Http.Results;
 
 namespace MusicStreaming.WebApi.Controllers
 {
     public class SongsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        
+
         //public IQueryable<Song> GetSongs()
         //{
         //    return db.Songs;
@@ -25,7 +26,7 @@ namespace MusicStreaming.WebApi.Controllers
         {
             return db.Songs.AsEnumerable();
         }
-        
+
         [ResponseType(typeof(Song))]
         public IHttpActionResult GetSong(int id)
         {
@@ -39,52 +40,57 @@ namespace MusicStreaming.WebApi.Controllers
         }
 
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutSong(int id, Song song)
+        public IHttpActionResult PutSong(Song song) //toDo
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            if (id != song.Id)
-            {
-                return BadRequest();
-            }
-
+            //if (id != song.Id)
+            //{
+            //    return BadRequest();
+            //}
+            var toEdit = db.Songs.FirstOrDefault(i => i.Id == song.Id);
             db.Entry(song).State = EntityState.Modified;
+            toEdit.Artist = song.Artist;
+            toEdit.Format = song.Format;
+            toEdit.Title = song.Title;
+            toEdit.Url = song.Url;
+            //try
+            //{
+            db.SaveChanges();
+            //}
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    if (!SongExists(song.Id))
+            //    {
+            //        return NotFound();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SongExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Redirect(@"http://localhost:3681/Songs/");
         }
 
-       // POST: api/Songs
-       [ResponseType(typeof(Song))]
-        public IHttpActionResult PostSong(Song song)
+        // POST: api/Songs
+        [ResponseType(typeof(Song))]
+        public RedirectResult PostSong(Song song)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+
+            song.Id = -1;
 
             db.Songs.Add(song);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = song.Id }, song);
+            return Redirect(@"http://localhost:3681/Songs/");
         }
 
 

@@ -52,24 +52,6 @@ namespace MusicStreamingWeb.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public async System.Threading.Tasks.Task<ActionResult> Create(Song song)
-        //{
-        //    var jsonString = System.Web.Helpers.Json.Encode(song);
-        //    using (var client = new HttpClient())
-        //    {
-        //        var uri = new Uri(ApiConnections.siteUrl + "Songs/PostSongByGetMethod?jsonString=" + jsonString);
-
-        //        var response = await client.GetAsync(uri);
-
-        //        string textResult = await response.Content.ReadAsStringAsync();
-
-        //        //var result = System.Web.Helpers.Json.Decode<Song>(textResult);
-        //    }
-        //    return RedirectToAction("Index");
-
-        //}
-
         public async System.Threading.Tasks.Task<ActionResult> Edit(int id)
         {
             Song model;
@@ -85,18 +67,6 @@ namespace MusicStreamingWeb.Controllers
             }
             return View(model);
         }
-
-        //[HttpPost]
-        //public ActionResult Edit(Song song)
-        //{
-        //    var edit = _db.Songs.FirstOrDefault(i => i.Id == song.Id);
-        //    edit.Artist = song.Artist;
-        //    edit.Title = song.Title;
-        //    edit.Url = song.Url;
-        //    edit.Format = song.Format;
-        //    _db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
 
         public async System.Threading.Tasks.Task<ActionResult> Delete(int id)
         {

@@ -6,10 +6,9 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
-{
+<form method="put" action="http://localhost:3964/api/Songs" role="form" class="form-horizontal">
+
     @Html.AntiForgeryToken()
-    
     <div class="form-horizontal">
         <h4>Song</h4>
         <hr />
@@ -53,8 +52,8 @@
             </div>
         </div>
     </div>
-}
+    </form>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

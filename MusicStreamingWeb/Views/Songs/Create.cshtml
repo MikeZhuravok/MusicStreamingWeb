@@ -6,13 +6,13 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm())
-{
+<form method="post" action="http://localhost:3964/api/songs" role="form" class="form-horizontal">
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
         <h4>Song</h4>
         <hr />
+        @Html.HiddenFor(m => m.Id)
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -51,29 +51,28 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        var model = {
-            Title: title,
-            Format : format,
-            Artist: artist,
-            Url: url
-        };
-        $('#submitBtn').bind('click', function ()
-        {
-            alert('h');
-            $.ajax({
-                type: "POST",
-                data: JSON.stringify(model),
-                url: "http://localhost:3964/api/songs/",
-                contentType: "application/Json",
-                success: function (result)
-                {
-                    window.location.replace("http://localhost:3681/Songs");
-                }
+    @*<script type="text/javascript">
+            var model = {
+                Title: title,
+                Format : format,
+                Artist: artist,
+                Url: url
+            $('#submitBtn').bind('click', function ()
+            {
+                alert('h');
+                $.ajax({
+                    type: "POST",
+                    data: JSON.stringify(model),
+                    url: "http://localhost:3964/api/songs/",
+                    contentType: "application/Json",
+                    success: function (result)
+                    {
+                        window.location.replace("http://localhost:3681/Songs");
+                    }
+                })
             })
-        })
-    </script> 
-}
+        </script> *@
+</form>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

@@ -188,6 +188,7 @@
     <Compile Include="Models\ApiConnections.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Comparer\ISongComparer.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Playlist.cs" />

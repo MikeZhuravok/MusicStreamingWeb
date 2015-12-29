@@ -34,19 +34,7 @@ namespace MusicStreaming.WebApi.Controllers
 
             return Ok(songInPlaylist);
         }
-        [ResponseType(typeof(Song))]
-        public IEnumerable<Song> SongInPlaylistsFromUser(string id)
-        {
-            var playlist = db.Playlists.FirstOrDefault(i => i.UserId == id);
-            if (playlist == null)
-            {
-                return null;
-            }
-            var model = db.SongsInPlaylists.
-                Where(i => i.PlaylistId == playlist.Id).
-                Select(i => i.Song).AsEnumerable();
-            return model;
-        }
+        
 
 
         // PUT: api/SongInPlaylists/5
