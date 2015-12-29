@@ -2,7 +2,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Web.Mvc;
 
@@ -16,7 +18,7 @@ namespace MusicStreamingWeb.Controllers
             IEnumerable<Song> model;
             using (var client = new HttpClient())
             {
-                var uri = new Uri(ApiConnections.siteUrl + "api/song/");
+                var uri = new Uri(ApiConnections.siteUrl + "api/Songs/");
 
                 var response = await client.GetAsync(uri);
 
@@ -32,7 +34,7 @@ namespace MusicStreamingWeb.Controllers
             Song model;
             using (var client = new HttpClient())
             {
-                var uri = new Uri(ApiConnections.siteUrl + "api/song/" + id);
+                var uri = new Uri(ApiConnections.siteUrl + "api/Songs/" + id);
 
                 var response = await client.GetAsync(uri);
 
@@ -48,20 +50,34 @@ namespace MusicStreamingWeb.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Create(Song song)
-        //{
-        //    _db.Songs.Add(song);
-        //    _db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        [HttpPost]
+        public ActionResult Create(Song song)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(ApiConnections.siteUrl + "api/Songs/");
+            httpWebRequest.ContentType = "text/json";
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                streamWriter.Write(Json(song).Data);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+            }
+            return RedirectToAction("Index");
+        }
 
         public async System.Threading.Tasks.Task<ActionResult> Edit(int id)
         {
             Song model;
             using (var client = new HttpClient())
             {
-                var uri = new Uri(ApiConnections.siteUrl + "api/song/" + id);
+                var uri = new Uri(ApiConnections.siteUrl + "api/Songs/" + id);
 
                 var response = await client.GetAsync(uri);
 
@@ -89,7 +105,7 @@ namespace MusicStreamingWeb.Controllers
             Song model;
             using (var client = new HttpClient())
             {
-                var uri = new Uri(ApiConnections.siteUrl + "api/song/" + id);
+                var uri = new Uri(ApiConnections.siteUrl + "api/Songs/" + id);
 
                 var response = await client.GetAsync(uri);
 
